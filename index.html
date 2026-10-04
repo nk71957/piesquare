@@ -82,7 +82,8 @@
         <p class="lead" style="margin-top:14px">Share a few details and we will get back to you with next steps and a quote.</p>
       </div>
       <div>
-        <form id="form">
+        <form id="form" action="https://formsubmit.co/piesquaretechnology@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New website enquiry">
           <label>Your name<input name="name" autocomplete="name" required></label>
           <label>Email or phone<input name="contact" autocomplete="email" required></label>
           <label>What do you need?
@@ -96,7 +97,7 @@
           <label>Tell us more<textarea name="msg"></textarea></label>
           <button class="btn btn-primary" type="submit">Send enquiry</button>
         </form>
-        <p id="thanks" role="status">Thanks, your enquiry is in. We will contact you soon.</p>
+        <p id="thanks" class="form-status" role="status" aria-live="polite">Thanks, your enquiry is in. We will contact you soon.</p>
       </div>
     </div>
   </section>
@@ -154,7 +155,8 @@
         <p class="lead" style="margin-top:14px">Fill in the form and our team will call you about batches, fees and the right track for you.</p>
       </div>
       <div>
-        <form id="form2">
+        <form id="form2" action="https://formsubmit.co/piesquaretechnology@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New IT training application">
           <label>Your name<input name="name" autocomplete="name" required></label>
           <label>Phone or email<input name="contact" required></label>
           <label>Highest qualification
@@ -166,7 +168,7 @@
           <label>Anything else we should know?<textarea name="msg"></textarea></label>
           <button class="btn btn-primary" type="submit">Apply for training</button>
         </form>
-        <p id="thanks2" class="thanks" role="status" style="display:none;padding:18px;border-radius:12px;background:var(--tint);font-weight:500">Thanks, your application is in. Our team will call you soon.</p>
+        <p id="thanks2" class="form-status" role="status" aria-live="polite">Thanks, your application is in. Our team will call you soon.</p>
       </div>
     </div>
   </section>

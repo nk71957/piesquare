@@ -21,9 +21,32 @@ Object.keys(D).forEach(function(k,i){
   b.onclick=function(){show(k)};tabs.appendChild(b);
 });
 show("Gym");
-document.getElementById("form").addEventListener("submit",function(e){
-  e.preventDefault();this.style.display="none";document.getElementById("thanks").style.display="block";
-});
+function connectForm(formId,statusId,successMessage){
+  var form=document.getElementById(formId),status=document.getElementById(statusId);
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var button=form.querySelector('button[type="submit"]'),buttonText=button.textContent,payload={};
+    new FormData(form).forEach(function(value,key){payload[key]=value});
+    button.disabled=true;button.textContent="Sending...";status.style.display="none";
+    fetch("https://formsubmit.co/ajax/piesquaretechnology@gmail.com",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify(payload)
+    }).then(function(response){
+      return response.json().then(function(data){
+        if(!response.ok||(data.success!=="true"&&data.success!==true)){throw new Error("Submission failed")}
+        return data;
+      });
+    }).then(function(){
+      form.style.display="none";status.textContent=successMessage;status.style.display="block";
+    }).catch(function(){
+      button.disabled=false;button.textContent=buttonText;
+      status.textContent="We couldn't send this just now. Your details are still here; please try again.";
+      status.style.display="block";
+    });
+  });
+}
+connectForm("form","thanks","Thanks, your enquiry is in. We will contact you soon.");
 
 var homeEl=document.getElementById("top"),carEl=document.getElementById("careers"),navc=document.getElementById("navc");
 var CIDS=["careers","tracks","assist","process","apply"];
@@ -35,9 +58,7 @@ function route(){
   if(t){t.scrollIntoView()}else{window.scrollTo(0,0)}
 }
 window.addEventListener("hashchange",route);route();
-document.getElementById("form2").addEventListener("submit",function(e){
-  e.preventDefault();this.style.display="none";document.getElementById("thanks2").style.display="block";
-});
+connectForm("form2","thanks2","Thanks, your application is in. Our team will call you soon.");
 var mb=document.getElementById("menuBtn"),lk=document.getElementById("links");
 function setMenu(o){lk.classList.toggle("open",o);mb.setAttribute("aria-expanded",o);mb.setAttribute("aria-label",o?"Close menu":"Open menu")}
 mb.addEventListener("click",function(){setMenu(!lk.classList.contains("open"))});

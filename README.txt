@@ -17,5 +17,8 @@ How to put it online
 Things to replace
   - Text, course names, durations and dashboard sample data
   - Add your phone, email, address and social links
-  - Contact and training forms only show a thank-you message.
-    Connect them to email, WhatsApp or a backend to receive enquiries.
+  - Contact and training forms send submissions to piesquaretechnology@gmail.com
+    through FormSubmit. Confirm the activation email FormSubmit sends after the
+    first submission before expecting ongoing delivery.
+  - Form submissions are sent to a third-party service. Review FormSubmit's
+    privacy terms before publishing the forms.
